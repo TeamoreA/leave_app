@@ -1,6 +1,6 @@
 from . import models
 from django import forms
-from datetime import date, datetime
+from datetime import datetime
 
 def validate_date(date_text):
     """
@@ -19,12 +19,8 @@ class LeaveForm(forms.ModelForm):
     def clean(self):
         validate_date(self.data['start_date'])
         validate_date(self.data['end_date'])
-        today = date.today()
         start_date = self.cleaned_data['start_date']
         end_date = self.cleaned_data['end_date']   
-
-        if today > start_date or today > end_date:
-            raise forms.ValidationError("Start date and end date must be a future date")                                                                         
 
         if end_date <= start_date:
             raise forms.ValidationError("End date must be later than start date")
