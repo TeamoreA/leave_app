@@ -1,0 +1,11 @@
+<h2><span>Leave Requests        |</span><a href="{% url 'add_leave' %}">REAQUEST LEAVE</a> </h2>
+{% if latest_question_list %}
+<ul>
+    {% for leave in latest_question_list %}
+    <li><b>Requested by: </b><span>{{ leave.user.name }} </span><b>Request days: </b><span>{{ leave.leave_days }}.
+        </span><a href="{% url 'update_leave' leave.id %}">edit</a></li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No leave requests available.</p>
+{% endif %}
