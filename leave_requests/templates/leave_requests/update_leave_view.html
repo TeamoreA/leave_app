@@ -1,4 +1,4 @@
-<h2><span>Leave/edit |</span><a href="{% url 'add_user' %}">ADD USER</a> </h2>
+<h2><span>Leave/edit        |</span><a href="{% url 'add_user' %}">ADD USER        |</a><a href="{% url 'index' %}">back</a> </h2>
 <form action="" method="post">
     {% csrf_token %}
     {{ form.non_field_errors }}
